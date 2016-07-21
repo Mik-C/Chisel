@@ -205,7 +205,7 @@ public class ChiselPlugin extends JavaPlugin{
     		switch(com){
     			case 1:
     				if(sender instanceof Player){
-    					if(sender.hasPermission("chisel.command.get")){
+    					if(sender.hasPermission("chisel.command") || sender.hasPermission("chisel.command.get")){
     						if(!pconfig.containsKey(((Player) sender).getUniqueId())){
     							pconfig.put(((Player) sender).getUniqueId(), new PlayerConfig());
     						}
@@ -222,13 +222,13 @@ public class ChiselPlugin extends JavaPlugin{
     				break;
     			
     			case 2:
-    				if(sender.hasPermission("chisel.command.help")){
+    				if(sender.hasPermission("chisel.command") || sender.hasPermission("chisel.command.help")){
     					sender.sendMessage(message(output_help, true, null, null, null));
     					return true;
     				}
     				break;
     			case 3:
-    				if(sender.hasPermission("chisel.command.list")){
+    				if(sender.hasPermission("chisel.command") || sender.hasPermission("chisel.command.list")){
     					byte[] sel;
     					if(sender instanceof Player){
     						if(!pconfig.containsKey(((Player) sender).getUniqueId())){
@@ -281,7 +281,7 @@ public class ChiselPlugin extends JavaPlugin{
     				}
     				break;
     			case 4:
-    				if(sender.hasPermission("chisel.command.reset")){
+    				if(sender.hasPermission("chisel.command") || sender.hasPermission("chisel.command.reset")){
     					if(sender instanceof Player){
     						if(pconfig.containsKey(((Player) sender).getUniqueId())){
         						ChiselPlugin.pconfig.get(((Player) sender).getUniqueId()).resetItem();

@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class ChiselWork {
 	@SuppressWarnings("deprecation")
 	public static void chiselReplace(PlayerInteractEvent event, int type, byte data){
-		if(event.getPlayer().hasPermission("chisel.work.rotate") || event.getPlayer().hasPermission("chisel.work.fixed")){
+		if(event.getPlayer().hasPermission("chisel.work") || event.getPlayer().hasPermission("chisel.work.rotate") || event.getPlayer().hasPermission("chisel.work.fixed")){
 			BlockState oldblock = event.getClickedBlock().getState();
 			event.getClickedBlock().setTypeId(type);
 			event.getClickedBlock().setData(data);

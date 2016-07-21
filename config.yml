@@ -63,16 +63,19 @@ familyblock:
     - 179
     - 179
     - 181
+    - 181
     data:
     - 0
     - 1
     - 2
     - 0
+    - 8
     lore:
     - Normal
     - Chiseled
     - Smooth
     - Slab
+    - Lisa
   3: 
     familyname: Stone Slab
     type:

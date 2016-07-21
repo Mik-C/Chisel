@@ -32,7 +32,7 @@ public class ChiselListener implements Listener{
 									true, null, null, null));
 						}
 						else if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
-							if(p.hasPermission("chisel.work.rotate")) ChiselWork.chiselMode1Work(event);
+							if(p.hasPermission("chisel.work") || p.hasPermission("chisel.work.rotate")) ChiselWork.chiselMode1Work(event);
 							else event.getPlayer().sendMessage(ChiselPlugin.message(ChiselPlugin.output_whenHasNoPermision, 
 									true, null, null, null));
 						}
@@ -44,7 +44,7 @@ public class ChiselListener implements Listener{
 									true, null, null, null));
 						}
 						else if(event.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
-							if(p.hasPermission("chisel.work.fixed")) ChiselWork.chiselMode2Work(event);
+							if(p.hasPermission("chisel.work") || p.hasPermission("chisel.work.fixed")) ChiselWork.chiselMode2Work(event);
 							else event.getPlayer().sendMessage(ChiselPlugin.message(ChiselPlugin.output_whenHasNoPermision, 
 									true, null, null, null));
 						}
