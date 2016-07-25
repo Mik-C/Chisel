@@ -24,7 +24,8 @@ public class ChiselWork {
 		for(BlockFamily fam: ChiselPlugin.families){
 			int i = fam.isThisFamily(type, data);
 			if(i > -1){
-				i = (i+1)%fam.type.length;
+				if(event.getPlayer().isSneaking()) i = (i + (fam.type.length - 1)) % fam.type.length;
+				else i = (i+1)%fam.type.length;
 				chiselReplace(event,fam.type[i],fam.data[i]);
 				return;
 			}
