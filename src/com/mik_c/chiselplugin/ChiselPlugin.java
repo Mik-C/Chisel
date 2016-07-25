@@ -63,7 +63,29 @@ public class ChiselPlugin extends JavaPlugin{
     		List<Integer> data = config.getIntegerList("familyblock."+i+".data");
     		List<String> lore = config.getStringList("familyblock."+i+".lore");
     		fam.add(new BlockFamily(config.getString("familyblock."+i+".familyname"),type,data,lore));
-    	}		
+    	}
+    	for(int i=1; i<=config.getInt("familyblock.stairs.numfamilies"); i++){
+    		Integer t = config.getInt("familyblock.stairs."+i+".type");
+    		List<Integer> type = new ArrayList<>();
+    		List<Integer> data = config.getIntegerList("familyblock.stairs.prototipe.data");
+    		List<String> lore = config.getStringList("familyblock.stairs.prototipe.lore");
+    		for(int j=0; j<data.size(); j++){
+    			type.add(t);
+    		}
+    		fam.add(new BlockFamily(config.getString("familyblock.stairs."+i+".familyname"),type,data,lore));
+    	}
+    	for(int i=1; i<=config.getInt("familyblock.slabs.numfamilies"); i++){
+    		Integer t = config.getInt("familyblock.slabs."+i+".type");
+    		Integer d = config.getInt("familyblock.slabs."+i+".data");
+    		List<Integer> type = new ArrayList<>();
+    		List<Integer> data = new ArrayList<>();
+    		List<String> lore = config.getStringList("familyblock.slabs.prototipe.lore");
+    		type.add(t);
+    		type.add(t);
+    		data.add(d);
+    		data.add(d+8);
+    		fam.add(new BlockFamily(config.getString("familyblock.slabs."+i+".familyname"),type,data,lore));
+    	}
     	families = fam;
     	pconfig.clear();
     }
@@ -124,6 +146,7 @@ public class ChiselPlugin extends JavaPlugin{
 	}
 	
 	private void firstRun() throws Exception {
+		cfFile.delete();
 		if(!cfFile.exists()){
 			cfFile.getParentFile().mkdirs();
 			copy(getResource("config.yml"), cfFile);
@@ -244,10 +267,15 @@ public class ChiselPlugin extends JavaPlugin{
     					
     					if(args.length == 1){
     						sender.sendMessage(message(output_list_header, true, null, null, null));
+    						String msg = "";
     						for(int i=0; i<families.size(); i++){
-    							sender.sendMessage(message(output_list_toRepeat, false, null, 
-            					families.get(i).familyname, families.get(i).lore[sel[i]]));
+    							if(i==0){
+    								msg += families.get(i).familyname;
+    							}else{
+    								msg += ", "+families.get(i).familyname;
+    							}
     						}
+    						sender.sendMessage(msg);
     					}else{
     						String arg2 = "";
     						for(int i=1; i<args.length; i++){

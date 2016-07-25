@@ -35,7 +35,7 @@ command:
 
 # Nota: debe haber el mismo numero de type, data y lore por cada familia
 familyblock:
-  numfamilies: 14
+  numfamilies: 18
   1: 
     familyname: Sandstone
     type: 
@@ -265,6 +265,215 @@ familyblock:
     lore:
     - Natural
     - Polished
+  15:
+    familyname: Purpur
+    type:
+    - 201
+    - 202
+    - 202
+    - 202
+    - 204
+    data:
+    - 0
+    - 0
+    - 4
+    - 8
+    - 0
+    lore:
+    - Normal
+    - Pilar Up/Down
+    - Pilar East/West
+    - Pilar North/South
+    - Double slab
+  16:
+    familyname: Piston
+    type:
+    - 33
+    - 33
+    - 33
+    - 33
+    - 33
+    - 33
+    data:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    lore:
+    - Down
+    - Up
+    - North
+    - South
+    - West
+    - East
+  17:
+    familyname: Stiky Piston
+    type:
+    - 29
+    - 29
+    - 29
+    - 29
+    - 29
+    - 29
+    data:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    lore:
+    - Down
+    - Up
+    - North
+    - South
+    - West
+    - East
+  18:
+    familyname: Bone
+    type:
+    - 216
+    - 216
+    - 216
+    data:
+    - 0
+    - 4
+    - 8
+    lore:
+    - Up/Down
+    - East/West
+    - North/South
+  stairs:
+    numfamilies: 14
+    prototipe:
+      data: 
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      lore: 
+      - East
+      - West
+      - South
+      - North
+      - East upside
+      - West upside
+      - South upside
+      - North upside
+    1:
+      familyname: Oak stairs
+      type: 53
+    2:
+      familyname: Cobblestone stairs
+      type: 67
+    3:
+      familyname: Brick stairs
+      type: 108
+    4:
+      familyname: Stonebrick stairs
+      type: 109
+    5:
+      familyname: Netherbrick stairs
+      type: 114
+    6:
+      familyname: Sandstone stairs
+      type: 128
+    7:
+      familyname: Spruce stairs
+      type: 134
+    8:
+      familyname: Birch stairs
+      type: 135
+    9:
+      familyname: Jungle stairs
+      type: 136
+    10:
+      familyname: Quartz stairs
+      type: 156
+    11:
+      familyname: Acacia stairs
+      type: 163
+    12:
+      familyname: Dark Oak stairs
+      type: 164
+    13:
+      familyname: Red Sandstone stairs
+      type: 180
+    14:
+      familyname: Purpur stairs
+      type: 203
+  slabs:
+    numfamilies: 15
+    prototipe:
+      lore:
+      - Down
+      - Up
+    1:
+      familyname: Stone slab
+      type: 44
+      data: 0
+    2:
+      familyname: Sandstone slab
+      type: 44
+      data: 1
+    3:
+      familyname: Cobblestone slab
+      type: 44
+      data: 3
+    4:
+      familyname: Bricks slab
+      type: 44
+      data: 4
+    5:
+      familyname: Stonebrick slab
+      type: 44
+      data: 5
+    6:
+      familyname: Netherbrick slab
+      type: 44
+      data: 6
+    7:
+      familyname: Quartz slab
+      type: 44
+      data: 7
+    8:
+      familyname: Red Sandstone slab
+      type: 182
+      data: 0
+    9:
+      familyname: Oak slab
+      type: 126
+      data: 0
+    10:
+      familyname: Spruce slab
+      type: 126
+      data: 1
+    11:
+      familyname: Birch slab
+      type: 126
+      data: 2
+    12:
+      familyname: Jungle slab
+      type: 126
+      data: 3
+    13:
+      familyname: Acacia slab
+      type: 126
+      data: 4
+    14:
+      familyname: Dark Oak slab
+      type: 126
+      data: 5
+    15:
+      familyname: Purpur slab
+      type: 205
+      data: 0
     
 output:
   header: "§6Chisel:§r "
@@ -278,12 +487,12 @@ output:
   - §o§7http://wiki.minecrafters.es/general:tutoriales:chisel
   list:
     header:
-    - §l§a[Familia de bloques]  §7->  §f[Bloque seleccionado]
+    - §l§7Familias de bloques:
     toRepeat:
     - §o§a%family   §7-   §f%sel
     concrete:
       header:
-      - "§o§a%family:"
+      - "§o§7%family:"
       toRepeat:
       - "§o- §f%sel"
       chosen:

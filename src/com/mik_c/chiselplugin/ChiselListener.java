@@ -26,7 +26,7 @@ public class ChiselListener implements Listener{
 				}else{
 					switch(pc.getMode()){
 					case 0: //Rotate mode
-						if(event.getAction().equals(Action.RIGHT_CLICK_AIR)){
+						if(event.getAction().equals(Action.LEFT_CLICK_AIR)){
 							pc.rotateMode();
 							event.getPlayer().sendMessage(ChiselPlugin.message(ChiselPlugin.output_whenModeChangesToFixed, 
 									true, null, null, null));
@@ -38,7 +38,7 @@ public class ChiselListener implements Listener{
 						}
 						break;
 					case 1: //Fixed mode
-						if(event.getAction().equals(Action.RIGHT_CLICK_AIR)){
+						if(event.getAction().equals(Action.LEFT_CLICK_AIR)){
 							pc.rotateMode();
 							event.getPlayer().sendMessage(ChiselPlugin.message(ChiselPlugin.output_whenModeChangesToRotate, 
 									true, null, null, null));
