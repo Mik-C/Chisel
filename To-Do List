@@ -4,6 +4,7 @@ Código:
 + Quitar salida default de "/chisel" -> Arreglado
 + Añadir un mensaje para cuando no se tienen permisos -> Listo para testear
 + Parametrizar todas las posibles salidas desde el fichero config.yml -> Testeado en localhost
++ Añadido soporte a WorldGuard -> Listo para testear
 
 Formato:
 + Refinar comando "/chisel list", que de un output más limpio -> Testeado en localhost

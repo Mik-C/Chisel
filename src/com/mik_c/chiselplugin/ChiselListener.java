@@ -9,7 +9,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
-
 public class ChiselListener implements Listener{
 	@SuppressWarnings("deprecation")
 	@EventHandler(priority=EventPriority.HIGH)
@@ -24,6 +23,9 @@ public class ChiselListener implements Listener{
 				if(event.getAction().equals(Action.LEFT_CLICK_BLOCK)){
 					ChiselWork.setSelection(event);
 				}else{
+					ChiselPlugin cp = ChiselPlugin.getInstance();
+					if(cp == null) return;
+					if(!ChiselPlugin.getInstance().canBuild(event)) return;
 					switch(pc.getMode()){
 					case 0: //Rotate mode
 						if(event.getAction().equals(Action.LEFT_CLICK_AIR)){

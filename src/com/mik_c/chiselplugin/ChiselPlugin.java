@@ -15,7 +15,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 
 public class ChiselPlugin extends JavaPlugin{
 	protected static List<BlockFamily> families;
@@ -52,6 +56,12 @@ public class ChiselPlugin extends JavaPlugin{
 		super();
 		commands = new HashMap<String, Integer>();
 		pconfig = new HashMap<UUID, PlayerConfig>();
+		instance = this;
+	}
+	
+	private static ChiselPlugin instance;
+	public static ChiselPlugin getInstance(){
+		return instance;
 	}
 	
 	public void refreshFamilies(){
@@ -66,7 +76,7 @@ public class ChiselPlugin extends JavaPlugin{
     	}
     	for(int i=1; i<=config.getInt("familyblock.stairs.numfamilies"); i++){
     		Integer t = config.getInt("familyblock.stairs."+i+".type");
-    		List<Integer> type = new ArrayList<>();
+    		List<Integer> type = new ArrayList<Integer>();
     		List<Integer> data = config.getIntegerList("familyblock.stairs.prototipe.data");
     		List<String> lore = config.getStringList("familyblock.stairs.prototipe.lore");
     		for(int j=0; j<data.size(); j++){
@@ -77,8 +87,8 @@ public class ChiselPlugin extends JavaPlugin{
     	for(int i=1; i<=config.getInt("familyblock.slabs.numfamilies"); i++){
     		Integer t = config.getInt("familyblock.slabs."+i+".type");
     		Integer d = config.getInt("familyblock.slabs."+i+".data");
-    		List<Integer> type = new ArrayList<>();
-    		List<Integer> data = new ArrayList<>();
+    		List<Integer> type = new ArrayList<Integer>();
+    		List<Integer> data = new ArrayList<Integer>();
     		List<String> lore = config.getStringList("familyblock.slabs.prototipe.lore");
     		type.add(t);
     		type.add(t);
@@ -340,4 +350,21 @@ public class ChiselPlugin extends JavaPlugin{
     	}
     	return true;
     }
+    
+    public WorldGuardPlugin getWorldGuard() {
+        Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
+     
+        // WorldGuard may not be loaded
+        if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
+            return null; // Maybe you want throw an exception instead
+        }
+     
+        return (WorldGuardPlugin) plugin;
+    }
+    
+    public boolean canBuild(PlayerInteractEvent event){
+		WorldGuardPlugin wg = getWorldGuard();
+		if(wg == null) return true;
+    	return getWorldGuard().canBuild(event.getPlayer(), event.getClickedBlock());
+	}
 }
